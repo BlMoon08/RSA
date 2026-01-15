@@ -85,9 +85,9 @@ q = 1013
 
 Kết quả mong đợi:
 
-n = 3233
+n = 1022117
 
-phi(n) = 3120
+phi(n) = 1020096
 
 e =  65537  (gia tri chuan bao mat)
 
@@ -100,9 +100,9 @@ Input: Thông điệp M = 65
 
 Quá trình: 
 
-C = 65^65537 mod 3233= 341568
+C = 65^65537 mod 1022117 = 341568
 
-M = 341568^2513 mod 3233 = 65
+M = 341568^832193 mod 1022117 = 65
 
 Kết quả: Giải mã đúng, M ban đầu được khôi phục
 ```
