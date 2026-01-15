@@ -77,10 +77,11 @@ Cho phép chọn:
 * Mã hóa / giải mã số nguyên
 * Mã hóa / giải mã chuỗi ký tự
 # Bộ test vector (Test Case)
+```text
 Input : 
-p = 61
+p = 1009
 
-q = 53
+q = 1013
 
 Kết quả mong đợi:
 
@@ -88,23 +89,49 @@ n = 3233
 
 phi(n) = 3120
 
-e =  257  (gia tri chuan bao mat)
+e =  65537  (gia tri chuan bao mat)
 
-d = 2513
-
+d = 832193
+```
 ## Test mã hóa – giải mã số nguyên
+```text
 
 Input: Thông điệp M = 65
 
 Quá trình: 
 
-C=65^257 mod 3233=2790
+C = 65^65537 mod 3233= 341568
 
-M=2973^2513 mod 3233=65
+M = 341568^2513 mod 3233 = 65
 
 Kết quả: Giải mã đúng, M ban đầu được khôi phục
+```
 
 ## Test mã hóa – giải mã chuỗi ký tự
+```text
 
 Input: Chuỗi: HELLO
+Quá trình:
+* Chuỗi ký tự đầu vào được chia thành các block nhỏ, mỗi ký tự được biểu diễn bằng 1 byte (ASCII, cơ số 256).
+* Mỗi block ký tự được chuyển thành một số nguyên sao cho giá trị luôn nhỏ hơn n của RSA.
+* Từng block số được mã hóa độc lập bằng RSA theo công thức C= M^e mod n.
+* Khi giải mã, các block được chuyển ngược lại thành ký tự và ghép theo đúng thứ tự ban đầu để thu được chuỗi gốc.
+Kết quả:
+* Chuỗi đã được mã hóa (5 blocks): 731303 501756 695207 695207 53604
+* Chuỗi giải mã: HELLO
+```
+# Nhận xét và hạn chế
+
+Chương trình không sử dụng padding (PKCS#1, OAEP, …)
+
+Kích thước số nguyên tố nhỏ → không đảm bảo an toàn thực tế
+
+Phù hợp cho học tập và minh họa thuật toán
+# Kết luận
+
+Dự án đã cài đặt thành công thuật toán RSA bằng C++ với đầy đủ các chức năng cơ bản.
+Chương trình giúp hiểu rõ nguyên lý hoạt động của RSA, cách sinh khóa, mã hóa và giải mã dữ liệu.
+
+
+
 
